@@ -160,7 +160,7 @@ def main():
         std_out, std_err, exit_code = run_wsman_cmd(url, auth, username,
                                                     password, cert_pem,
                                                     cert_key_pem, cmd)
-        sys.stderr.write(std_out)
+        sys.stdout.write(std_out)
         sys.stderr.write(std_err)
 
     sys.exit(exit_code)
