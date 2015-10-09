@@ -28,6 +28,8 @@ AUTH_CERTIFICATE = "certificate"
 DEFAULT_PORT_HTTP = 5985
 DEFAULT_PORT_HTTPS = 5986
 
+CODEPAGE_UTF8 = 65001
+
 def print_usage():
     print ("%s [-U <url>] [-H <host>] [-P <port>] [-s] "
            "[-a <basic|kerberos|certificate>] "
@@ -116,7 +118,7 @@ def run_wsman_cmd(url, auth, username, password, cert_pem, cert_key_pem, cmd):
                           cert_pem=cert_pem,
                           cert_key_pem=cert_key_pem)
 
-    shell_id = p.open_shell()
+    shell_id = p.open_shell(codepage=CODEPAGE_UTF8)
 
     command_id = p.run_command(shell_id, cmd[0], cmd[1:])
     std_out, std_err, status_code = p.get_command_output(shell_id, command_id)
